@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Page</title>
+  <link rel="stylesheet" href="/admin-assets/css/home.css" />
+  <link rel="stylesheet" href="/admin-assets/css/create_bank.css" />
+  <link rel="icon" type="image/x-icon" href="/admin-assets/images/icon.png" />
+
+
+  <!------ Include the above in your HEAD tag ---------->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+  <!-- bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script> -->
+
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+  <!-- official jquery -->
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js" type="text/javascript"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>   -->
+  <script src=" https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+</head>
+
+<body>
+  <div class="blog-section">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-11 blog-content">
+          <h1 class="blog-heading">Admin Page</h1>
+        </div>
+        <div class="col-1 logout-btn">
+          <a href="/admin/logout" class="btn btn-primary">Logout</a>
+        </div>
+      </div>
+
+    </div>
+    <div id="success_message"
+      style=" display:none;position: absolute;top: 5rem;right: 1.25rem;background-color: green;color: #fff;padding: 0.313rem; z-index:9">
+      Successfully updated into database !!
+    </div>
+    <div id="error_message"
+      style="display:none;position: absolute;top: 5rem;right: 1.25rem;background-color:red;color: #fff;padding: 0.313rem;z-index:9"
+      class="display-error">
+    </div>
+    <div id="error_msg"
+      style="display:none;position: absolute;top: 5rem;right: 1.25rem;background-color:red;color: #fff;padding: 0.313rem;z-index:9"
+      class="display-error">
+    </div>
+  </div>
+
+  <!-- Modal HTML -->
+  <div id="myModal" class="modal fade">
+    <div class="modal-dialog modal-confirm">
+      <div class="modal-content">
+        <div class="modal-header flex-column">
+          <div class="icon-box">
+            <i class="material-icons">&#xE5CD;</i>
+          </div>
+          <h4 class="modal-title w-100">Are you sure?</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p>Do you really want to delete this record?</p>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button onclick="Deletebankdata()" type="button" class="btn btn-danger">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container">
+    <div>
+      <div class="searchform d-flex">
+        <form id="searchform" method="get">
+          <div class="searchspace autocomplete">
+            <h5 class="">Search Bank by Name</h5>
+            <input id="bank-search-bar" type="text" name="bank-search-bar" placeholder="Search Bank"
+              autocomplete="off" />
+            <button class="searchbtn" onclick="BankDataBtn()"><i
+                class="searchicon fa-sharp fa-solid fa-arrow-right "></i></button>
+            <div class="bank-not-found">
+            </div>
+          </div>
+        </form>
+      </div>
+      <!-- <div class="compareFdbtn">
+        <button class="btn btn-primary" onclick="CompareFD()">Update Compare FD</button>
+      </div> -->
+    </div>
+
+    <div class="p-1 bg-white rounded shadow mb-5 mt-5">
+      <!-- Bordered tabs-->
+      <ul id="myTab1" role="tablist" class="nav nav-tabs nav-pills with-arrow flex-column flex-sm-row text-center">
+        <li class="nav-item flex-sm-fill">
+          <a id="bank-detail-tab" data-toggle="tab" href="#bank-detail" role="tab" aria-controls="bank-detail"
+            aria-selected="true" class="nav-link text-uppercase font-weight-bold mr-sm-3 rounded-0 border active">Bank
+            Details</a>
+        </li>
+        <li class="nav-item flex-sm-fill">
+          <a id="interest-info-tab" data-toggle="tab" href="#interest-info" role="tab" aria-controls="interest-info"
+            aria-selected="false" class="nav-link text-uppercase font-weight-bold mr-sm-3 rounded-0 border">Interest
+            Info</a>
+        </li>
+        <li class="nav-item flex-sm-fill">
+          <a id="upload-image-tab" data-toggle="tab" href="#upload-image" role="tab" aria-controls="upload-image"
+            aria-selected="false" class="nav-link text-uppercase font-weight-bold rounded-0 border">Upload Bank Logo</a>
+        </li>
+        <li class="nav-item flex-sm-fill">
+          <a id="scrap-fd-tab" data-toggle="tab" href="#scrap-fd" role="tab" aria-controls="scrap-fd"
+            aria-selected="false" class="nav-link text-uppercase font-weight-bold rounded-0 border">Scrap-fd</a>
+        </li>
+        <li class="nav-item flex-sm-fill">
+          <a id="add-new-bank-tab" data-toggle="tab" href="#add-new-bank" role="tab" aria-controls="add-new-bank"
+            aria-selected="false" class="nav-link text-uppercase front-weight-bold rounded-0 border">Add New Bank</a>
+        </li>
+        <li class="nav-item flex-sm-fill">
+          <a id="add-email-tab" data-toggle="tab" href="#add-email" role="tab" aria-controls="add-email"
+            aria-selected="false" class="nav-link text-uppercase front-weight-bold rounded-0 border">Add Email</a>
+        </li>
+      </ul>
+      <div id="myTab1Content" class="tab-content">
+        <div id="interest-info" role="tabpanel" aria-labelledby="interest-info-tab" class="tab-pane fade px-4 py-5 ">
+          <div class="table-title">
+            <div class="row">
+              <div class="col-sm-6">
+                <h2><b>Add Bank Details</b></h2>
+              </div>
+              <div class="col-sm-6">
+                <button type="button" class="btn btn-info compare-fd"
+                  title="This will update fdtable and srFdTable for compare fd page" onclick="CompareFD()">
+                  Update Compare FD
+                </button>
+                <button type="button" id="irPostBtn" class="btn btn-info save-data" disabled data-toggle="modal"
+                  data-target="#IrTableModal">Post Data</button>
+                <!-- <button type="button" class="btn btn-info add-new" disabled><i class="fa fa-plus"></i> Add New Row</button>   -->
+              </div>
+            </div>
+          </div>
+          <div class="maxIr table-wrapper">
+            <h6><strong>Max Value Details</strong></h6>
+            <table class="maxIrTable  table-bordered" id="maxIrTable">
+              <thead>
+                <th>Max Gen IR</th>
+                <th>Max Sr IR</th>
+                <th>Max Gen Dur</th>
+                <th>Max Sr Dur</th>
+              </thead>
+              <tbody id="maxIrTbody">
+              </tbody>
+            </table>
+          </div>
+          <div class="table-title">
+            <div class="row">
+              <div class="col-sm-6">
+                <h4><b>Interest Info table</b></h4>
+              </div>
+              <div class="col-sm-6">
+                <button type="button" class="btn btn-info add-new-row" id="add-new-row" disabled>Add new row</button>
+                <button type="button" class="btn btn-info discard-changes" onclick="DiscardChanges()" disabled>Discard
+                  Changes</button>
+              </div>
+            </div>
+          </div>
+          <table class="irTable table text-center table-bordered table-responsive-sm" id="interest-table">
+            <thead>
+              <tr>
+                <th>Duration</th>
+                <th>Interest</th>
+                <th>Sr Interest</th>
+                <th>From Days</th>
+                <th>To Days</th>
+                <th style="width:13%">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="tbody">
+
+            </tbody>
+          </table>
+        </div>
+        <div id="bank-detail" role="tabpanel" aria-labelledby="bank-detail-tab"
+          class="tab-pane fade px-4 py-5 show active">
+          <!-- <div class="table-wrapper tabContent" id = "bank-detail"> -->
+          <div class="table-title">
+            <div class="row">
+              <div class="col-sm-6">
+                <h2><b>Bank Details</b></h2>
+              </div>
+              <div class="col-sm-6">
+                <button type="button" class="btn btn-info save-data" disabled id="updatepost"
+                  onclick="BankDetailPostData()">Post
+                  Data</button>
+                <button href="#myModal" data-toggle="modal" stype="button" class="btn delete-btn save-data trigger-btn"
+                  disabled id="deletepost">Delete Bank
+                </button>
+              </div>
+
+            </div>
+          </div>
+          <table class="bankDetailTable table table-bordered table-responsive-sm" id="bankDetailEditTable">
+            <thead>
+              <tr class="blackborder">
+                <th style="width:30%" class="leftalign">Name</th>
+                <th class="text-center">Data</th>
+                <th style="width:13%" class="leftalign">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr class="blackborder">
+                <td class="leftalign">Name of Bank <span class="mandatory">*</span></td>
+                <td class="leftalign" id="name_of_bank"></td>
+                <td class="edithtml leftalign"></td>
+              </tr>
+
+              <tr class="blackborder">
+                <td class="leftalign">Nick Name of Bank <span class="mandatory">*</span></td>
+                <td class="leftalign" id="nick_name_of_bank"></td>
+                <td class="edithtml leftalign"></td>
+              </tr>
+              <tr class="blackborder">
+                <td class="leftalign">Address of Bank</td>
+                <td class="leftalign" id="address_of_bank"></td>
+                <td class="edithtml leftalign"></td>
+              </tr>
+
+              <tr class="blackborder">
+                <td class="leftalign">Primary Url of Bank (Start with https://) <span class="mandatory">*</span> </td>
+                <td class="leftalign" id="primary_of_bank"></td>
+                <td class="edithtml leftalign"></td>
+              </tr>
+              <tr class="blackborder">
+                <td class="leftalign">Alternate Url of Bank (Start with https://) <span class="mandatory">*</span></td>
+                <td class="leftalign" id="alterurl_of_bank"></td>
+                <td class="edithtml leftalign"></td>
+              </tr>
+              <tr class="blackborder">
+                <td class="leftalign">Image of Bank</td>
+                <td class="leftalign" id="imageurl_of_bank"></td>
+                <td class="edithtml leftalign"></td>
+              </tr>
+              <tr class="idHide">
+                <td>id</td>
+                <td id="id_of_bank"></td>
+              </tr>
+              <tr class="blackborder">
+                <td class="leftalign">Status of Bank <span class="mandatory">*</span></td>
+                <td class="leftalign" id="status_of_bank"></td>
+                <td class="edithtml leftalign" id="statusTR"></td>
+              </tr>
+              <tr class="blackborder">
+                <td class="leftalign">Compounding Period of Bank <span class="mandatory">*</span></td>
+                <td class="leftalign" id="compounding_of_bank"></td>
+                <td class="edithtml leftalign"></td>
+              </tr>
+              <tr class="blackborder">
+                <td class="leftalign">Type of Bank <span class="mandatory">*</span></td>
+                <td class="leftalign" id="type_of_bank"></td>
+                <td class="edithtml leftalign"></td>
+              </tr>
+
+              <tr class="blackborder">
+                <td class="leftalign">Rating-1 of Bank</td>
+                <td class="leftalign" id="rating1_of_bank"></td>
+                <td class="edithtml leftalign"></td>
+              </tr>
+              <tr class="blackborder">
+                <td class="leftalign">Rating-2 of Bank</td>
+                <td class="leftalign" id="rating2_of_bank"></td>
+                <td class="edithtml leftalign"></td>
+              </tr>
+              <tr class="blackborder">
+                <td class="leftalign">Rating-3 of Bank</td>
+                <td class="leftalign" id="rating3_of_bank"></td>
+                <td class="edithtml leftalign"></td>
+              </tr>
+              <tr class="blackborder">
+                <td class="leftalign">Rating-4 of Bank</td>
+                <td class="leftalign" id="rating4_of_bank"></td>
+                <td class="edithtml leftalign" id="editing"></td>
+              </tr>
+
+            </tbody>
+          </table>
+          <span class="mandatory">*</span>Mandatory Fields
+        </div>
+        <div id="upload-image" role="tabpanel" aria-labelledby="upload-image-tab" class="tab-pane fade px-4 py-5">
+          <h3>Search Bank for Image Upload <span class="mandatory">*</span></h3>
+          <div id="bankImageDiv">
+            <input type="hidden" id="imageUrlId">
+          </div>
+        </div>
+        <div id="scrap-fd" role="tabpanel" aria-labelledby="scrap-fd-tab" class="tab-pane fade px-4 py-5">
+          <h3>
+            <strong>
+              Update Scrap FD Details
+            </strong>
+          </h3>
+          <button onclick=RunScript()> Run script</button>
+          <div style="color:gray">
+            <p>Conditions to use : </p>
+            <ul>
+              <li>Can Update Keywords, Return Type and Logic Code together</li>
+              <li>Can Update Keywords only</li>
+              <li>Can Update Logic Code and Return Type together only</li>
+            </ul>
+          </div>
+          <!-- form for scrap fd page -->
+          <form onsubmit="ScrapFdPostData()">
+            <div class="row">
+              <div class="col-6">
+                <div class="keyword">
+                  <label for="keyword">Keyword</label>
+                  <a id='keyword-add-button' class="scrap-edit" onclick="toggleEditMode('keyword')"
+                    data-toggle="tooltip"><i class="material-icons"></i></a>
+                  <a id='keyword-edit-button' style="display: none;" class="scrap-add"
+                    onclick="toggleAddMode('keyword')" data-toggle="tooltip"><i class="material-icons"></i></a>
+                  <input id="keyword" disabled readonly>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="return-type">
+                  <label for="return-type">Return Type</label>
+                  <a id='return-type-add-button' class="scrap-edit" onclick="toggleEditMode('return-type')"
+                    data-toggle="tooltip"><i class="material-icons"></i></a>
+                  <a id='return-type-edit-button' style="display: none;" class="scrap-add"
+                    onclick="toggleAddMode('return-type')" data-toggle="tooltip"><i class="material-icons"></i></a>
+                  <!-- <input id = "return-type" readonly> -->
+                  <div>
+                    <select id="return-type" disabled>
+                      <option selected disabled>Select a option</option>
+                      <option value="HTML">HTML</option>
+                      <option value="PDF">PDF</option>
+                      <option vlaue="IMAGE">Image</optoon>
+                      <option value="PDF-IMAGE">PDF-IMAGE</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="logic-code">
+              <label for="logic-code">Logic code</label>
+              <a id='logic-code-add-button' class="scrap-edit" onclick="toggleEditMode('logic-code')"
+                data-toggle="tooltip"><i class="material-icons"></i></a>
+              <a id='logic-code-edit-button' style="display: none;" class="scrap-add"
+                onclick="toggleAddMode('logic-code')" data-toggle="tooltip"><i class="material-icons"></i></a>
+
+              
+              <textarea id="logic-code" readonly disabled></textarea>
+            </div>
+            <div id="runScript">
+              
+            </div>
+            <div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+            
+          </form>
+        </div>
+        <div id="add-new-bank" role="tabpanel" aria-labelledby="add-new-bank-tab" class="tab-pane fade px-4 py-5">
+          <div id="svg_wrap"></div>
+          <!-- this html window is for save bank details . -->
+
+          <h3 class="create-new-bank-text">Create New Bank</h3>
+          <section class="addbankdetails">
+            <h3>Add Bank Details</h3>
+
+            <span class="mandatory">*</span><input type="text" name="bankName" id="banknameId"
+              placeholder="Name of Bank " onfocusOut="BankFormValidation()" />
+            <p class="danger" id="name_message"></p>
+
+            <div class="d-flex inputmargin">
+              <div class="inputhalf">
+                <span class="mandatory">*</span><input type="text" class="" id="banknicknameId" name="nickName"
+                  placeholder="Nick Name of Bank " onChange="BankFormValidation()" />
+                <p class="danger" id="nickname_message"></p>
+              </div>
+
+              <div class="inputhalf marginleft">
+                <span class="mandatory">*</span><select class="selectbg selectheight" id="banktypeId" name="type"
+                  onChange="BankFormValidation()">
+                  <option value=""> --Select Bank Type *--</option>
+                  <option value="PSU">PSU</option>
+                  <option value="Private">Private</option>
+                  <option value="SFB">SFB</option>
+                  <option value="Regional">Regional</option>
+                  <option value="Payments">Payments</option>
+                </select>
+                <p class="danger" id="type_message"></p>
+              </div>
+            </div>
+            <span class="mandatory">*</span><input type="text" class="inputmargin" id="primaryUrlId" required
+              name="priUrl" placeholder="Primary URL " onChange="BankFormValidation()" />
+            <p class="danger" id="pri_message"></p>
+            <span class="mandatory">*</span><input type="text" class="inputmargin" id="bankalterUrlId" required
+              name="alterUrl" placeholder="Alternate URL" onChange="BankFormValidation()" />
+            <p class="danger" id="alter_message"></p>
+
+            <div class="d-flex inputmargin">
+              <div class="inputhalf">
+                <span class="mandatory">*</span>
+                <select id="compoundingpdId" class="selectbg selectheight" name="compoundingpd"
+                  onChange="BankFormValidation()">
+                  <option value=""> *Select Compounding period </option>
+                  <option value="Monthly">Monthly</option>
+                  <option value="Quarterly">Quarterly</option>
+                  <option value="Half-Yearly">Half-Yearly</option>
+                  <option value="Yearly">Yearly</option>
+                </select>
+                <p class="danger" id="compounding_message"></p>
+              </div>
+            </div>
+
+            <div class="d-flex inputmargin">
+              <div class="inputhalf">
+                <select class="selectbg selectheight" id="rating1Id" name="rating1">
+                  <option value=""> --Select Rating - 1 --</option>
+                  <option value=1>1</option>
+                  <option value=2>2</option>
+                  <option value=3>3</option>
+                  <option value=4>4</option>
+                </select>
+                <p class="danger" id="rating1_message"></p>
+              </div>
+              <div class="inputhalf marginleftalt">
+                <select class="selectbg selectheight" id="rating2Id" name="rating2">
+                  <option value=""> --Select Rating - 2--</option>
+                  <option value=1>1</option>
+                  <option value=2>2</option>
+                  <option value=3>3</option>
+                  <option value=4>4</option>
+                </select>
+                <p class="danger" id="rating2_message"></p>
+              </div>
+            </div>
+
+            <div class="d-flex inputmargin">
+              <div class="inputhalf">
+                <select class="selectbg selectheight" id="rating3Id" name="rating3">
+                  <option value=""> --Select Rating - 3--</option>
+                  <option value=1>1</option>
+                  <option value=2>2</option>
+                  <option value=3>3</option>
+                  <option value=4>4</option>
+                </select>
+                <p class="danger" id="rating3_message"></p>
+              </div>
+              <div class="inputhalf marginleftalt">
+                <select class="selectbg selectheight" id="rating4Id" name="rating4">
+                  <option value=""> --Select Rating - 4--</option>
+                  <option value=1>1</option>
+                  <option value=2>2</option>
+                  <option value=3>3</option>
+                  <option value=4>4</option>
+                </select>
+                <p class="danger" id="rating4_message"></p>
+              </div>
+            </div>
+
+            <textarea id="bankaddressId" class="inputmargin" name="address" rows="4" cols="40"
+              placeholder="Enter Bank Address here...." onChange="BankFormValidation()"></textarea>
+            <p class="danger" id="address_message"></p>
+            <label for="banklogo">Bank Logo<span class="mandatory">*</span></label>
+            <input type="file" name="banklogo" id="banklogoId" placeholder="Select Bank logo"
+              onChange="BankFormValidation()">
+            <img src="" id="display_logo">
+            <p id="banklogo_message" class="danger"></p>
+          </section>
+          <p>Save will be enabled after all mandatory details filled. (<span class="mandatory">*</span>)</p>
+          <button type="submit" id="save" disabled class="button save-btn" onClick="SaveBankDetail()">Save</button>
+
+          <!-- This html window is for interest info table -->
+          <section class="">
+            <h6>Status of Bank</h6>
+            <select class="" id="newStatusId" name="newStatus" disabled>
+              <option value="" disabled> --Select Status--</option>
+
+              <option value="Active">Active</option>
+              <option value="Inactive" selected="Inactive">Inactive</option>
+              <option value="Suspended">Suspended</option>
+              <option value="Closed">Closed</option>
+              <option value="Not Available">Not Available</option>
+            </select>
+            <div id="interest-info">
+              <div class="table-title">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <h4><b>Interest Info table</b></h4>
+                  </div>
+                  <div class="col-sm-6">
+                  </div>
+                </div>
+              </div>
+              <div class="newMaxIr table-wrapper">
+                <h6><strong>Max Value Details</strong></h6>
+                <table class="newMaxIrTable table table-bordered text-center" id="newMaxIrTable">
+                  <thead>
+                    <th>Max Gen IR</th>
+                    <th>Max Sr IR</th>
+                    <th>Max Gen Dur</th>
+                    <th>Max Sr Dur</th>
+                  </thead>
+                  <tbody id="newMaxIrTbody">
+                  </tbody>
+                </table>
+              </div>
+              <div class="table-title">
+                <div class="row">
+                  <div class="col-sm-6">
+
+                  </div>
+                  <div class="col-sm-6">
+                    <button type="button" class="btn btn-info newAddNewRow" id="newAddNewRow">Add new
+                      row</button>
+                    <!-- <button type="button" class="btn btn-info add-new" disabled><i class="fa fa-plus"></i> Add New Row</button>   -->
+                  </div>
+                </div>
+              </div>
+              <table class="newIrTable table table-bordered table-responsive-sm text-center" id="newIrTable">
+                <thead>
+                  <tr>
+                    <th>Duration</th>
+                    <th>Interest</th>
+                    <th>Sr Interest</th>
+                    <th>From Days</th>
+                    <th>To Days</th>
+                    <th style="width:13%">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="newIrTbody">
+
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <div class="button" id="prev">&larr; Previous</div>
+          <div class="button" id="next">Next &rarr;</div>
+          <div class="button final-submit-btn" id="submit" onClick="CreateBank()" disabled> Final Submit </div>
+
+        </div>
+        <div id="add-email" role="tabpanel" aria-labelledby="add-email-tab" class="tab-pane fade px-4 py-5">
+          <input type="text" id="email-input"> Enter Email
+          <button type="button" class="btn btn-info save-data" onclick= "AddEmailPost()" > Submit </button>
+        </div>
+      </div>
+      <!-- End bordered tabs -->
+    </div>
+    <!-- Modal for Ir Table confirmation -->
+    <div class="modal fade" id="IrTableModal" tabindex="-1" role="dialoug" aria-labelledby="IrTableLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="model-title" id="IrTableLabel">Insert Interest Info Table</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Are you sure?
+            <!-- Interest Info Table is blank so the status of bank should not be active -->
+            <div id="irTableStatus" style="visibility:hidden;">
+              <p>Change Bank Status</p>
+              <select id="selectBankStatus">
+                <option value="" disabled selected=""> --Select Status--</option>
+                <option value="Not Available">Not Available</option>
+                <option value="Inactive">Inactive</option>
+                <option value="Closed">Closed</option>
+                <option value="Suspended">Suspended</option>
+              </select>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" onclick="InterestInfoPostData()">Save Changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="../admin-assets/scripts/home.js" type="text/javascript"></script>
+  <script src="../admin-assets/scripts/create_bank.js" type="text/javascript"></script>
+</body>
+
+</html>

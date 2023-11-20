@@ -1,0 +1,48 @@
+/* error 400 page css */
+.header-404 {
+  margin: 2% auto 10% auto;
+  width: 50%;
+}
+
+.heading-404 {
+  text-align: center;
+}
+
+.image-404 {
+  margin: auto;
+  width: 100%;
+  text-align: center;
+}
+
+.footer-404 {
+  text-align: center;
+}
+
+.footer-404 a {
+  background-color: #1252ae;
+  color: #fff;
+  text-decoration: none;
+  padding: 0.625rem 0.9375rem;
+  border-radius: 0.25rem;
+  -webkit-border-radius: 0.25rem;
+  -moz-border-radius: 0.25rem;
+  -ms-border-radius: 0.25rem;
+  -o-border-radius: 0.25rem;
+}
+
+.image-404 img {
+  width: 60%;
+}
+
+
+#home-redirect #seconds {
+  background-color: #1252ae;
+  color: #ffffff;
+  border-radius: 0.25rem;
+  -webkit-border-radius: 0.25rem;
+  -moz-border-radius: 0.25rem;
+  -ms-border-radius: 0.25rem;
+  -o-border-radius: 0.25rem;
+  padding: 0.25rem 0.625rem;
+  font-weight: bold;
+}

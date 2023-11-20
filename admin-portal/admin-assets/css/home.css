@@ -1,0 +1,477 @@
+html {
+  height: 100%;
+  min-height: 50rem;
+}
+
+body {
+  background-size: cover;
+  background-repeat: no-repeat;
+  text-align: center;
+  font-family: 'Noto Sans', sans-serif;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  display: block;
+  margin: 0rem;
+}
+
+/* Background of Admin Page */
+.blog-content {
+  text-align: center;
+  color: #fff;
+}
+
+.blog-heading {
+  font-weight: 300;
+}
+
+.blog-section {
+  background-color: #1252ae;
+  position: relative;
+  background: url(../images/fd-banner.png);
+  padding: 1.875rem;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: fixed;
+  z-index: 10;
+  width: 100%;
+}
+
+/*--------------------Interest Table CSS---------------------------------- */
+.table-wrapper {
+  width: 100%;
+  margin: auto;
+  background: #fff;
+  padding: 1.25rem;
+  box-shadow: 0 0.0625rem 0.0625rem rgba(0, 0, 0, .05);
+}
+
+.table-title {
+  padding-bottom: 0.625rem;
+  margin: 0 0 0.625rem;
+}
+
+.table-title h2 {
+  margin: 0.25rem 0 0;
+  font-size: 1.375rem;
+}
+
+.table-title .compare-fd,
+.table-title .add-new-row,
+.table-title .save-data,
+.table-title .discard-changes {
+  height: 1.875rem;
+  font-weight: bold;
+  font-size: 0.75rem;
+  text-shadow: none;
+  min-width: 6.25rem;
+  border-radius: 3.125rem;
+  line-height: 0.8125rem;
+}
+
+.table-title .save-data,
+.table-title .compare-fd,
+.table-title .add-new-row,
+.table-title .discard-changes {
+  float: right;
+  margin-right: 0.25rem;
+}
+
+table.table {
+  table-layout: fixed;
+}
+
+table.table tr th,
+table.table tr td {
+  border-color: #605959;
+  margin-left: 0rem;
+  margin-right: 0rem;
+  padding-left: 0rem;
+  padding-right: 0rem;
+}
+
+table.table th i {
+  font-size: 0.8125rem;
+  margin: 0 0.3125rem;
+  cursor: pointer;
+}
+
+table.table th:last-child {
+  width: 6.25rem;
+}
+
+table.table td a {
+  cursor: pointer;
+  display: inline-block;
+  margin: 0 0.3125rem;
+  min-width: 1.5rem;
+}
+
+table.table td a.add {
+  color: #27C46B;
+}
+
+table.table td a.edit {
+  color: #FFC107;
+}
+
+table.table td a.delete {
+  color: #E34724;
+}
+
+table.table td i {
+  font-size: 1.1875rem;
+}
+
+table.table td a.add i {
+  font-size: 1.5rem;
+  margin-right: -0.375rem;
+  position: relative;
+  top: 0.1875rem;
+}
+
+table.table .form-control {
+  height: 2rem;
+  line-height: 2rem;
+  box-shadow: none;
+  border-radius: 0.125rem;
+}
+
+table.table .form-control.error {
+  border-color: #f50000;
+}
+
+table.table td .add {
+  display: none;
+}
+
+table.table td .bankDetailAdd {
+  display: none;
+  color: #27C46B !important;
+}
+
+table.table td a.bankDetailEdit {
+  color: #FFC107 !important;
+}
+
+/*------------------MaxIR table-------------------*/
+table.maxIrTable {
+  table-layout: fixed;
+  text-align: center;
+}
+
+table.maxIrTable tr th,
+table.table tr td {
+  border-color: #605959 !important;
+  margin-left: 0rem;
+  margin-right: 0rem;
+  padding-left: 0rem;
+  padding-right: 0rem;
+}
+
+table.maxIrTable {
+  width: 100%;
+}
+
+/*-------------form css for Scrap_FD-----------------*/
+
+select,
+textarea {
+  background-color: white;
+  width: 100%;
+  padding: 0.75rem;
+  border: 0.0625rem solid;
+  border-radius: 0.25rem;
+  resize: vertical;
+}
+
+.idHide {
+  display: none !important;
+} 
+.scrap-add .scrap-edit{
+  float: right;
+}
+#logic-code{
+  /* width: 100%; */
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 0.25rem;
+  resize: vertical;
+}
+
+/*------------------Main search bar form css-----------------*/
+#bank-search-bar {
+  border-radius: 0.25rem;
+  height: 2.1875rem;
+  border: 0.0625rem solid #dddddd;
+  width: 50vw;
+  font-size: 0.9375rem;
+  padding-left: 0.4375rem;
+}
+
+#bank-search-bar:focus {
+  outline: none;
+}
+
+#bank-search-bar::placeholder {
+  text-align: center;
+}
+
+#search {
+  border-radius: 1.25rem;
+  padding: 0.625rem;
+  border: 0.0625rem solid black;
+  text-align: center;
+}
+
+.searchform {
+  align-items: center;
+  justify-content: center;
+}
+
+.searchspace {
+  left: 1.25rem;
+}
+
+.searchspace h5 {
+  font-weight: bold;
+  justify-content: center;
+  align-items: center;
+}
+
+.searchspace button {
+  position: relative;
+  left: -2.5625rem;
+  top: 0rem;
+}
+
+.searchbtn {
+  width: 2.125rem;
+  border-radius: 0.25rem;
+  height: 1.75rem;
+  border: none;
+  background: #1252AE;
+}
+
+.searchicon {
+  color: white !important;
+}
+
+.autocomplete {
+  position: relative;
+  margin-top: 6.2rem;
+  display: inline-block;
+}
+
+
+.autocomplete-items {
+  position: absolute;
+  border: 0.0625rem 0.0625rem 0.0625rem 0.0625rem solid #d4d4d4;
+  z-index: 99;
+  top: 100%;
+  left: 0;
+  right: 0;
+  max-height: 11.375rem;
+  overflow: auto;
+  margin-top: 0.0625rem;
+  border-left: 0.0625rem solid #d4d4d4;
+  border-bottom: 0.0625rem solid #d4d4d4;
+  border-right: 0.0625rem solid #d4d4d4;
+  width: 50vw;
+}
+
+.autocomplete-items::-webkit-scrollbar-thumb {
+  background: #ff8e2b;
+}
+
+
+.autocomplete-items::-webkit-scrollbar-track {
+  background: white;
+}
+
+
+.autocomplete-items div {
+  padding: 0.625rem;
+  cursor: pointer;
+  background-color: #fff;
+  border-bottom: 0.0625rem solid #d4d4d4;
+  color: black;
+  text-align: left;
+}
+
+/*when hovering an item:*/
+.autocomplete-items div:hover {
+  background-color: #1252AE !important;
+  color: #ffffff !important;
+}
+
+/*when navigating through the items using the arrow keys:*/
+.autocomplete-active {
+  background-color: #1252AE !important;
+  color: #ffffff !important;
+}
+
+#searchform .searchspace h5 {
+  margin-top: 1.875rem;
+  margin-bottom: 0.625rem;
+}
+
+
+.with-arrow .nav-link.active {
+  position: relative;
+}
+
+.with-arrow .nav-link.active::after {
+  content: '';
+  border-left: 0.375rem solid transparent;
+  border-right: 0.375rem solid transparent;
+  border-top: 0.375rem solid #2b90d9;
+  position: absolute;
+  bottom: -0.375rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: block;
+}
+
+/*-------------------Bank Details CSS----------------------*/
+.danger {
+  color: #f50000 !important;
+}
+
+
+.success {
+  color: green !important;
+}
+
+
+.statusTR {
+  pointer-events: none !important;
+  display: none;
+}
+
+.trclass {
+  display: none;
+}
+
+.mandatory {
+  color: red;
+}
+
+.inputradio {
+  width: 30%;
+}
+
+.imagebtn {
+  margin-top: 0.6rem;
+  line-height: 1.3rem !important;
+  font-weight: 800 !important;
+}
+.image-data {
+  height: 1.875rem;
+  font-weight: bold;
+  font-size: 0.75rem;
+  text-shadow: none;
+  min-width: 6.25rem;
+  border-radius: 3.125rem;
+  line-height: 0.8125rem;
+}
+
+.idHide {
+  display: none !important;
+}
+
+.delete-btn{
+  color: white!important;
+    background-color: #f11313!important;
+    border-color: #f11313;
+}
+
+
+
+
+
+/*MOdal css in delete bank button*/
+.modal-confirm {		
+	color: #636363;
+	width: 400px;
+}
+.modal-confirm .modal-content {
+	padding: 20px;
+	border-radius: 5px;
+	border: none;
+	text-align: center;
+	font-size: 14px;
+}
+.modal-confirm .modal-header {
+	border-bottom: none;   
+	position: relative;
+}
+.modal-confirm h4 {
+	text-align: center;
+	font-size: 26px;
+	margin: 30px 0 -10px;
+}
+.modal-confirm .close {
+	position: absolute;
+	top: -5px;
+	right: -2px;
+}
+.modal-confirm .modal-body {
+	color: #999;
+}
+.modal-confirm .modal-footer {
+	border: none;
+	text-align: center;		
+	border-radius: 5px;
+	font-size: 13px;
+	padding: 10px 15px 25px;
+}
+.modal-confirm .modal-footer a {
+	color: #999;
+}		
+.modal-confirm .icon-box {
+	width: 80px;
+	height: 80px;
+	margin: 0 auto;
+	border-radius: 50%;
+	z-index: 9;
+	text-align: center;
+	border: 3px solid #f15e5e;
+}
+.modal-confirm .icon-box i {
+	color: #f15e5e;
+	font-size: 46px;
+	display: inline-block;
+	margin-top: 13px;
+}
+.modal-confirm .btn, .modal-confirm .btn:active {
+	color: #fff;
+	border-radius: 4px;
+	background: #60c7c1;
+	text-decoration: none;
+	transition: all 0.4s;
+	line-height: normal;
+	min-width: 120px;
+	border: none;
+	min-height: 40px;
+	border-radius: 3px;
+	margin: 0 5px;
+}
+.modal-confirm .btn-secondary {
+	background: #c1c1c1;
+}
+.modal-confirm .btn-secondary:hover, .modal-confirm .btn-secondary:focus {
+	background: #a8a8a8;
+}
+.modal-confirm .btn-danger {
+	background: #f15e5e;
+}
+.modal-confirm .btn-danger:hover, .modal-confirm .btn-danger:focus {
+	background: #ee3535;
+}
+.trigger-btn {
+	display: inline-block;
+}

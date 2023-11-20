@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>FixFD Admin</title>
+  <script>
+    var currentUrl = window.location.href;
+    var url = new URL(currentUrl);
+    var hostname = url.hostname;
+    var redirectUri;
+    
+    if (hostname.includes("localhost")) {
+        redirectUri = 'http://localhost/admin/callback';
+      } else if (hostname.includes("beta.fixfd.com")) {
+        redirectUri = 'https://beta.fixfd.com/admin/callback';
+      } 
+
+
+    function loginWithGoogle() {
+      var clientId = '311694035452-48d46mq28d6c12bvk69qgnrh577g02bf.apps.googleusercontent.com';
+      var scope = 'openid email profile'; // Specify the required scopes
+
+      var authorizationEndpoint = 'https://accounts.google.com/o/oauth2/v2/auth';
+      var params = {
+        client_id: clientId,
+        redirect_uri: redirectUri,
+        response_type: 'code',
+        scope: scope,
+        access_type: 'offline', // Requesting offline access
+        prompt: 'consent', // Prompt the user for consent every time
+      };
+
+      var url = authorizationEndpoint + '?' + encodeQueryString(params);
+      window.location.href = url;
+    }
+
+    function encodeQueryString(params) {
+      return Object.keys(params).map(function(key) {
+        return encodeURIComponent(key) + '=' + encodeURIComponent(params[key]);
+      }).join('&');
+    }
+
+    window.onload = function() {
+      loginWithGoogle();
+    }
+  </script>
+</head>
+
+<body>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const error = urlParams.get("error");
+    if (error) {
+      alert(error);
+    }
+  </script>
+</body>
+
+</html>

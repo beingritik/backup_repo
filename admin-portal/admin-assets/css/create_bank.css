@@ -1,0 +1,183 @@
+#svg_form_time {
+  height: 0.9375rem;
+  max-width: 80%;
+  margin: 2.5rem auto 1.25rem;
+  display: block;
+}
+
+#svg_form_time circle,
+#svg_form_time rect {
+  fill: white;
+}
+
+.button {
+  background: #1350AD;
+  border-radius: 0.3125rem;
+  padding: 0.9375rem 1.5625rem;
+  display: inline-block;
+  margin: 0.625rem;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0rem 0.125rem 0.3125rem rgb(0, 0, 0, 0.5);
+}
+
+.save-btn{
+background:white;
+border-color: #40454d!important;
+color:#40454d;
+border-radius: 0.3125rem;
+  padding: 0.9375rem 1.5625rem;
+  display: inline-block;
+  margin: 0.625rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0rem 0.125rem 0.3125rem rgb(0, 0, 0, 0.5);
+  cursor: not-allowed;
+}
+
+.disabled {
+  display: none;
+}
+
+section {
+  background: white;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(0.625rem);
+  /* box-shadow: 0rem 0.125rem 0.625rem rgba(0, 0, 0, 0.3); */
+  border-radius: 0.3125rem;
+  transition: transform 0.2s ease-in-out;
+}
+
+input {
+  width: 100%;
+  margin: 0.4375rem 0rem;
+  display: inline-block;
+  padding: 0.75rem 1.5625rem;
+  box-sizing: border-box;
+  border-radius: 0.3125rem;
+  border: 0.0625rem solid lightgrey;
+  font-size: 1em;
+  font-family: inherit;
+  background: white;
+}
+p {
+  text-align: justify;
+  margin-top: 0;
+}
+.ir-info{
+  max-width: 100%;
+}
+.addbankdetails {
+  padding: 1.875rem;
+  max-width: 100%;
+  margin: 1.875rem auto;
+}
+
+.inputmargin{
+  margin-top:0.5rem!important;
+}
+
+.inputhalf{
+  display: inline;
+  width:49%!important;
+}
+
+.selectbg{
+  background-color: white;
+}
+
+.marginleft{
+margin-left:2rem!important;
+}
+
+.display-error{
+  transition: 2s;
+
+}
+
+.selectheight{  height: 3.1rem;
+}
+
+.compareFdbtn{
+float:right;
+margin-top:0.375rem;
+}
+
+.final-submit-btn{
+  background:white;
+  border-color: #40454d!important;
+  color:#40454d;
+  border-radius: 0.3125rem;
+  padding: 0.9375rem 1.5625rem;
+  font-weight: bold;
+  cursor: pointer;
+  cursor: not-allowed;
+}
+
+.leftalign{
+  padding-left:0.7rem!important;
+}
+
+.blackborder{
+  border-color:#605959;
+}
+
+.marginleftalt{
+margin-left:1rem!important;
+}
+
+.create-new-bank-text{
+  padding-left: 1.9rem;
+}
+
+/*create new Bank Interest table CSS */
+.table-title .newAddNewRow {
+  float: right;
+  margin-right: 0.25rem;
+  height: 1.875rem;
+  font-weight: bold;
+  font-size: 0.75rem;
+  text-shadow: none;
+  min-width: 6.25rem;
+  border-radius: 3.125rem;
+  line-height: 0.8125rem;
+}
+
+table.table td a.newAdd {
+  color: #27C46B;
+}
+
+table.table td a.newEdit {
+  color: #FFC107;
+}
+
+table.table td a.newDelete {
+  color: #E34724;
+}
+
+table.table td i {
+  font-size: 1.1875rem;
+}
+
+table.table td a.newAdd i {
+  font-size: 1.5rem;
+  margin-right: -0.375rem;
+  position: relative;
+  top: 0.1875rem;
+}
+
+table.table .form-control {
+  height: 2rem;
+  line-height: 2rem;
+  box-shadow: none;
+  border-radius: 0.125rem;
+}
+
+table.table .form-control.error {
+  border-color: #f50000;
+}
+
+table.table td .newEdit {
+  display: none;
+}
